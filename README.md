@@ -1,29 +1,81 @@
-## Test Results
+# FastAPI Login API
 
-During the experiment, the brute force script tried different passwords automatically.
+Simple REST API login system built with FastAPI and SQLModel.
 
-In my test:
+## Description
 
-- Total attempts: 5
-- Total time: 0.03 seconds
-- Result: Password was not found (or found if correct password exists)
+This project is a basic authentication API created with FastAPI.
+It validates a username and password against an embedded SQLite database.
 
-This shows that if a weak password exists in the system, it can be discovered quickly.
+The database is created automatically when the application starts,
+and a test user is added.
 
-If the password list is bigger, the attack would take more time, but it could still succeed if there is no protection.
+## Technologies Used
 
----
+- Python 3.10+
+- FastAPI
+- SQLModel
+- SQLite
+- Uvicorn
 
-## Conclusion
+## Installation
 
-This project helped me understand how brute force attacks work.
+Clone the repository:
 
-I learned that:
+git clone https://github.com/pachecojromar-glitch/fastapi-login-api.git
 
-- Weak passwords are dangerous.
-- Systems without login limits are vulnerable.
-- Security protections are very important.
+Enter the project folder:
 
-To improve security, the system should use password hashing, login attempt limits, and multi-factor authentication.
+cd fastapi-login-api
 
-This project was developed only for educational purposes.
+Create virtual environment:
+
+python -m venv venv
+
+Activate virtual environment (Windows):
+
+venv\Scripts\activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+## Run the API
+
+uvicorn main:app --reload
+
+Open in browser:
+
+http://127.0.0.1:8000/docs
+
+## Example User
+
+Username: admin  
+Password: 1234  
+
+## Example Login Request
+
+POST /login
+
+{
+  "username": "admin",
+  "password": "1234"
+}
+
+## Expected Response
+
+{
+  "message": "Login successful"
+}
+
+## Error Example
+
+{
+  "detail": "Incorrect password"
+}
+
+## Notes
+
+- No JWT or session handling is implemented.
+- This project is for educational purposes.
+- The database is embedded and created automatically.ucational purposes.
